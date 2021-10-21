@@ -18,6 +18,8 @@ func main() {
 
 	c := colly.NewCollector()
 
+	coins := []Coin{}
+
 	c.OnHTML("tbody > tr", func(e *colly.HTMLElement) {
 		symbol := e.ChildText(".d-lg-none")
 		market_cap := e.ChildText(".td-market_cap")
@@ -36,6 +38,9 @@ func main() {
 			PercentChange24H: percent_change_24h,
 			PercentChange7D:  percent_change_7d,
 		}
+
+		coins = append(coins, coin)
+
 	})
 
 	c.Visit("https://www.coingecko.com/en")
