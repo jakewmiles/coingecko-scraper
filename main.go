@@ -1,5 +1,9 @@
 package main
 
+import (
+	"github.com/gocolly/colly/v2"
+)
+
 type Coin struct {
 	Symbol           string
 	MarketCap        string
@@ -11,5 +15,13 @@ type Coin struct {
 }
 
 func main() {
+
+	c := colly.NewCollector()
+
+	c.OnHTML("tbody > tr", func(e *colly.HTMLElement) {
+
+	})
+
+	c.Visit("https://www.coingecko.com/en")
 
 }
