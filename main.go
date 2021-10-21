@@ -48,7 +48,7 @@ func main() {
 
 	c.Visit("https://www.coingecko.com/en")
 
-	jsonData, err := json.Marshal(coins)
+	jsonData, err := json.MarshalIndent(coins, "", " ")
 	if err != nil {
 		panic(err)
 	}
