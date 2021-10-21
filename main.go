@@ -1,6 +1,9 @@
 package main
 
 import (
+	"encoding/json"
+	"fmt"
+
 	"github.com/gocolly/colly/v2"
 )
 
@@ -44,5 +47,12 @@ func main() {
 	})
 
 	c.Visit("https://www.coingecko.com/en")
+
+	jsonData, err := json.Marshal(coins)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("Scraping finished")
+	fmt.Println(string(jsonData))
 
 }
